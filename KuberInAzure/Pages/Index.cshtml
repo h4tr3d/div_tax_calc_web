@@ -1,0 +1,71 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+    <div class="text-left">
+        <h3>Генератор налогового отчета по дивидендам иностранных компаний за 2020 год</h3>
+        <br />
+        <p>
+            1) Закажите годовой брокерский отчет в формате XML (поддерживаются брокеры Открытие и ВТБ).
+            <br />
+            2) Переименуйте файл в следущем формате: <br /><br />
+            <b>
+                <i>
+                    VTB_*****.xml        - для отчетов ВТБ Брокер <br />
+                    Open_MOEX_*****.xml  - для отчетов Открытие Брокер, Московская Биржа <br />
+                    Open_SPB_*****.xml   - для отчетов Открытие Брокер, Санкт-Петербургская Биржа <br />
+                </i>
+            </b>
+        </p>
+
+        3) Загрузите один или несколько брокерских отчетов в генератор и нажмите кнопку "Сформировать". <br />
+        4) Скачайте результирующий отчет, скопируйте содежимое в Excel-файл.<br />
+        5) На выходе формируется отчет по всем дивидендным выплатам с указанием суммы налога для оплаты.<br />
+        6) Вопросы или ошибки? Нужно добавить поддержку нового брокера? Пишите в директ <a href="https://www.instagram.com/invest_adviser/">
+    <img alt="invest_adviser" src="~/Instagram.png"
+         width="32" height="32">
+    invest_adviser
+</a>. Донаты принимаем на карту Сбербанка 4817 7601 2420 8780.<br />
+
+        <br />
+
+        @using (Html.BeginForm("Create", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+        <fieldset class="text-center">
+            <table>
+                <tr>
+                    <td>Отчет #1</td>
+                    <td><input type="file" name="VTB" /></td>
+                </tr>
+                <tr>
+                    <td>Отчет #2</td>
+                    <td><input type="file" name="Open_MOEX" /></td>
+                </tr>
+                <tr>
+                    <td>Отчет #3</td>
+                    <td><input type="file" name="Open_SPB" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Сформировать" />
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+
+        <br />
+        <br />
+        <table>
+            <tr>
+                <td><img src="~/VTB.png" height="60" width="200"/></td> 
+                <td><img src="~/Open.jpg" height="60" width="200"/></td>
+            </tr>
+        </table>
+        }
+    </div>
